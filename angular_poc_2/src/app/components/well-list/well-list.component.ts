@@ -11,7 +11,7 @@ export class WellListComponent implements OnInit {
   constructor() { }
 
   public wellListObj:any = [];
-  public parentSourceKey:any;
+  public parentSourceKey:any = "";
   @ViewChild('appWell')
   appWell!: WellComponent;
   
@@ -74,12 +74,9 @@ export class WellListComponent implements OnInit {
   }
 
   onSourceClick(sourcekey:any){
-    console.log(sourcekey);
+    // console.log(sourcekey);
     this.parentSourceKey = sourcekey;
-    this.appWell.updateAddWellForm();
+    this.appWell.updateAddWellForm(sourcekey);
   }
 
-  ngAfterViewInit() {
-    this.appWell.updateAddWellForm();
-  }
 }

@@ -1,7 +1,7 @@
 <section class="wellForm">
     <h1>Add Well</h1>
     <form #addWellForm="ngForm">
-    
+        {{addWellForm.value | json}}
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" [(ngModel)]="model.name" >
@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
             <label for="source">Source Key:</label>
-            <input type="text" class="form-control" id="source" placeholder="Enter sourcekey" name="source" [(ngModel)]="model.source">
+            <input type="number" class="form-control" id="source" placeholder="Enter sourcekey" name="source" [(ngModel)]="model.source">
         </div>
         <button type="button" class="btn btn-default" (click)="onAddWell(addWellForm.value)">Add Well</button>
     </form>

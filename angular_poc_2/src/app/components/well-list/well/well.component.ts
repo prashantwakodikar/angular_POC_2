@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Well } from './well';
 
@@ -13,21 +13,28 @@ export class WellComponent implements OnInit {
   @Output() addWellObjEvent = new EventEmitter();
   @Input("parentSourceData") parentSourceKey:any; 
   
-  public model:any;
+  @ViewChild('addWellForm') addWellForm!: NgForm;
+
+  public model!: Well;
+  public sourcekeyEnabled = false;
 
   ngOnInit(): void {
-    this.model = new Well(" "," ",this.parentSourceKey);
-    // console.log(this.parentSourceKey)
+    this.model = new Well("","",this.parentSourceKey);
   }
 
   onAddWell(formObj:any){
     // emit the form object data from child to parent 
+    // console.log(formObj);
+    // console.log(this.addWellForm.control.get("source"))
+    if(this.addWellForm.control.get("source")?.status == "DISABLED"){
+      formObj['source'] = this.addWellForm.control.get("source")?.value;
+    }
     this.addWellObjEvent.emit(formObj);
   }
 
-  updateAddWellForm(){
-    console.log("inn")
-    this.model = new Well(" "," ",this.parentSourceKey);
+  updateAddWellForm(sourcekey:number){    
+    // this.sourcekeyEnabled = true;  
+    this.addWellForm.control.get('source')?.disable();  
+    this.addWellForm.control.patchValue({'source':sourcekey})
   }
-  
 }

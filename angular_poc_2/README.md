@@ -37,13 +37,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 4. Create a form with below inputs in well componenet with a Add button. - DONE
 
-5. pass sourceKey from parent to child and in view it should be disabled.
+5. pass sourceKey from parent to child and in view it should be disabled. - DONE
 
 6. Create a well and pass it parent using Output directive so that it gets displayed in the list on click of Add button. - DONE
 
-Also make use of ElementRef to pass the value from view to component.
+7. Also make use of ElementRef to pass the value from view to component. - DONE
 
-From the parent component when you click on the source key, it will show the well component with the sourceKey populated by default and disabled since you clicked on it..
+8. From the parent component when you click on the source key, it will show the well component with the sourceKey populated by default and disabled since you clicked on it.. - DONE
 
 There can be many wells added associated to a source key.
 
