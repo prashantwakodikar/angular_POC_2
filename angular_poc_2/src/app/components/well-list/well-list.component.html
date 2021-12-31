@@ -1,0 +1,23 @@
+<section class="userwrap">
+    <h1>Well List Component</h1>
+    <div class="panel panel-default">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Source</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of wellListObj">
+                    <td>{{user.name}}</td>
+                    <td [ngClass]="user.type == 'rls' ? 'rls_bg' : 'esp_bg' ">{{user.type}}</td>
+                    <td (click)="onSourceClick(user.source)">{{user.source}}</td>
+                    <!-- <td routerLink="/well-list/well">{{user.source}}</td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<app-well #appWell [parentSourceData]="parentSourceKey" (addWellObjEvent)="onAddWellEvent($event)"></app-well>
+</section>
